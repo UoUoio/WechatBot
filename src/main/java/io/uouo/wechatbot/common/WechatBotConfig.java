@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
  * @Description: < 描述 >
  */
 @Configuration
-public class WechatBotUrlConfig {
+public class WechatBotConfig {
 
     /** 微信bot 链接地址*/
     @Value("${wechatBot.url}")

@@ -14,5 +14,3 @@
 
 
 ## 0.0.1版本目录结构
-
-![image](https://user-images.githubusercontent.com/63728294/111729560-4c3fce80-88aa-11eb-97c6-2778b79fdf51.png)
