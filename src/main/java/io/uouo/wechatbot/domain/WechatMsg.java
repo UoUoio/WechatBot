@@ -12,9 +12,10 @@ public class WechatMsg {
     private String wxid;
     /** 消息内容 */
     private String content;
+    /** 群组id 群组内发送@消息时使用 */
     private String roomId;
     private Integer type;
-    private String nick;
+    private String nickname;
     /** 图片消息的图片地址(绝对路径 D:/xxx.jpg) */
     private String path;
 
@@ -59,8 +60,12 @@ public class WechatMsg {
         this.type = type;
     }
 
-    public String getNick() {
-        return nick;
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPath() {
@@ -71,7 +76,5 @@ public class WechatMsg {
         this.path = path;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
+
 }

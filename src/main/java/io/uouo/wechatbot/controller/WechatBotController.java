@@ -1,16 +1,10 @@
 package io.uouo.wechatbot.controller;
 
-import io.uouo.wechatbot.client.WechatBotClient;
 import io.uouo.wechatbot.common.util.AjaxResult;
 import io.uouo.wechatbot.domain.WechatMsg;
 import io.uouo.wechatbot.service.WechatBotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: [青衫] 'QSSSYH@QQ.com'
@@ -24,20 +18,77 @@ public class WechatBotController {
     private WechatBotService wechatBotService;
 
 
+    /**
+     * 描述: 发送文本消息
+     *
+     * @param wechatMsg
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-26
+     */
     @PostMapping("/sendTextMsg")
     public AjaxResult sendTextMsg(@RequestBody WechatMsg wechatMsg) {
         wechatBotService.sendTextMsg(wechatMsg);
         return AjaxResult.success();
-
     }
 
-    @PostMapping("/sendIMGMsg")
-    public AjaxResult sendIMGtMsg(@RequestBody WechatMsg wechatMsg) {
+    /**
+     * 描述: 发送图片消息
+     *
+     * @param wechatMsg
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-26
+     */
+    @PostMapping("/sendImgMsg")
+    public AjaxResult sendImgMsg(@RequestBody WechatMsg wechatMsg) {
         // 发送消息
-        wechatBotService.sendIMGMsg(wechatMsg);
+        wechatBotService.sendImgMsg(wechatMsg);
         return AjaxResult.success();
+    }
 
+    /**
+     * 描述: 群组内发送@指定人消息(dll 3.1.0.66版本不可用)
+     *
+     * @param wechatMsg
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-26
+     */
+    @PostMapping("/sendATMsg")
+    public AjaxResult sendATMsg(@RequestBody WechatMsg wechatMsg) {
+        wechatBotService.sendATMsg(wechatMsg);
+        return AjaxResult.success();
     }
 
 
+    // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 获取信息 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+    /**
+     * 描述: 获取微信群组,联系人列表
+     *
+     * @param
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    @GetMapping("/getWeChatUserList")
+    public AjaxResult getWeChatUserList() {
+        wechatBotService.getWeChatUserList();
+        return AjaxResult.success();
+    }
+
+    /**
+     * 描述: 获取微信群组,联系人列表 (待调试)
+     *
+     * @param
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    @GetMapping("/getPersonalDetail/{wxid}")
+    public AjaxResult getPersonalDetail(@PathVariable("wxid") String wxid) {
+        wechatBotService.getPersonalDetail(wxid);
+        return AjaxResult.success();
+    }
 }

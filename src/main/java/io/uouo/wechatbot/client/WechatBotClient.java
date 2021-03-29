@@ -96,12 +96,14 @@ public class WechatBotClient extends WebSocketClient {
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-18
      */
-    public void sendMsgUtil(WechatMsg wechatMsg) {
+    public void sendMsgUtil(Integer type,WechatMsg wechatMsg) {
+        // 消息类型
+        wechatMsg.setType(type);
         // 消息Id
         wechatMsg.setId(String.valueOf(System.currentTimeMillis()));
-        String json = JSONObject.toJSONString(wechatMsg);
-        System.err.println(":" + json);
         // 发送消息
-        send(json);
+        String string = JSONObject.toJSONString(wechatMsg);
+        System.err.println(":" + string);
+        send(JSONObject.toJSONString(wechatMsg));
     }
 }

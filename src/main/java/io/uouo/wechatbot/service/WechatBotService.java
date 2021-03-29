@@ -27,5 +27,36 @@ public interface WechatBotService {
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-18
      */
-    public void sendIMGMsg(WechatMsg wechatMsg);
+    public void sendImgMsg(WechatMsg wechatMsg);
+
+    /**
+     * 描述: 群组内发送@指定人消息
+     *
+     * @param wechatMsg
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-26
+     */
+    void sendATMsg(WechatMsg wechatMsg);
+
+
+    /**
+     * 描述: 获取微信群组,联系人列表
+     *
+     * @param
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    void getWeChatUserList();
+
+    /**
+     * 描述:
+     *
+     * @param wxid
+     * @return void
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    void getPersonalDetail(String wxid);
 }

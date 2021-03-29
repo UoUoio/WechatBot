@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @Description: <  >
  */
 @Service
-public class WechatBotServiceImpl implements WechatBotService {
+public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
 
 
     /** 注入微信客户端 */
@@ -32,8 +32,7 @@ public class WechatBotServiceImpl implements WechatBotService {
     @Override
     public void sendTextMsg(WechatMsg wechatMsg) {
         // 消息类型
-        wechatMsg.setType(WechatBotCommon.TXT_MSG);
-        wechatBotClient.sendMsgUtil(wechatMsg);
+        wechatBotClient.sendMsgUtil(TXT_MSG, wechatMsg);
     }
 
     /**
@@ -45,8 +44,53 @@ public class WechatBotServiceImpl implements WechatBotService {
      * @Date 2021-3-18
      */
     @Override
-    public void sendIMGMsg(WechatMsg wechatMsg) {
-        wechatMsg.setType(WechatBotCommon.PIC_MSG);
-        wechatBotClient.sendMsgUtil(wechatMsg);
+    public void sendImgMsg(WechatMsg wechatMsg) {
+        wechatBotClient.sendMsgUtil(PIC_MSG, wechatMsg);
+    }
+
+    /**
+     * 描述: 群组内发送@指定人消息
+     *
+     * @param wechatMsg
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-26
+     */
+    @Override
+    public void sendATMsg(WechatMsg wechatMsg) {
+        wechatBotClient.sendMsgUtil(AT_MSG, wechatMsg);
+    }
+
+
+    /**
+     * 描述: 获取微信群组,联系人列表
+     *
+     * @param
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    @Override
+    public void getWeChatUserList() {
+        WechatMsg wechatMsg = new WechatMsg();
+        wechatMsg.setWxid(NULL_MSG);
+        wechatMsg.setContent(CONTACT_LIST);
+        wechatBotClient.sendMsgUtil(USER_LIST, wechatMsg);
+    }
+
+    /**
+     * 描述:
+     *
+     * @param
+     * @return void
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-3-29
+     */
+    @Override
+    public void getPersonalDetail(String wxid) {
+        WechatMsg wechatMsg = new WechatMsg();
+        wechatMsg.setWxid(wxid);
+        wechatMsg.setContent(PERSONAL_DETAIL_CONTENT);
+        wechatBotClient.sendMsgUtil(PERSONAL_DETAIL, wechatMsg);
     }
 }
