@@ -11,6 +11,8 @@
 > 3. 启动项目
 > 4. 调用接口: http://localhost:8081/sendTextMsg 发送文本消息 具体接口文档待完善
 
+## 接口文档
+[点击查看接口文档](https://docs.apipost.cn/view/94356b050fc22d34)
 
 
 ## 0.0.1版本目录结构
