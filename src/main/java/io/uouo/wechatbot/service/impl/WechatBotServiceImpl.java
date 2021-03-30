@@ -31,6 +31,9 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      */
     @Override
     public void sendTextMsg(WechatMsg wechatMsg) {
+        wechatMsg.setRoomid(NULL_MSG);
+        wechatMsg.setNickname(NULL_MSG);
+        wechatMsg.setExt(NULL_MSG);
         // 消息类型
         wechatBotClient.sendMsgUtil(TXT_MSG, wechatMsg);
     }
