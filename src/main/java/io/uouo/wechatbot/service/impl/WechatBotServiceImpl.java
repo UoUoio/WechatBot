@@ -1,6 +1,5 @@
 package io.uouo.wechatbot.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import io.uouo.wechatbot.client.WechatBotClient;
 import io.uouo.wechatbot.common.WechatBotCommon;
 import io.uouo.wechatbot.domain.WechatMsg;
