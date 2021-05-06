@@ -116,8 +116,8 @@ public class WechatBotController {
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-5-6
      */
-    @GetMapping("/getGroupDesignator/{roomid}/{wxid}")
-    public AjaxResult getGroupDesignator(@PathVariable("roomid") String roomid, @PathVariable("wxid") String wxid) {
+    @GetMapping("/getChatroomMemberNick/{roomid}/{wxid}")
+    public AjaxResult getChatroomMemberNick(@PathVariable("roomid") String roomid, @PathVariable("wxid") String wxid) {
         wechatBotService.getChatroomMemberNick(roomid, wxid);
         return AjaxResult.success();
     }
