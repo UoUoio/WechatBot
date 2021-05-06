@@ -18,6 +18,7 @@ public interface WechatBotService {
      * @Date 2021-3-18
      */
     public void wechatCommon(WechatMsg wechatMsg);
+
     /**
      * 描述: 发送文字消息
      *
@@ -58,6 +59,7 @@ public interface WechatBotService {
      * @Date 2021-3-26
      */
     void sendAnnex(WechatMsg wechatMsg);
+
     /**
      * 描述: 获取微信群组,联系人列表
      *
@@ -78,4 +80,14 @@ public interface WechatBotService {
      */
     void getPersonalDetail(String wxid);
 
+    /**
+     * 描述: 获取群组里指定联系人的详细信息
+     *
+     * @param roomid 群组id
+     * @param wxid   指定用户id
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-5-6
+     */
+    void getChatroomMemberNick(String roomid, String wxid);
 }

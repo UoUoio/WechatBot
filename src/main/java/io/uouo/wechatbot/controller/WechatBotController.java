@@ -108,6 +108,21 @@ public class WechatBotController {
     }
 
     /**
+     * 描述: 获取群组里指定联系人的详细信息
+     *
+     * @param roomid 群组id
+     * @param wxid   指定用户id
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-5-6
+     */
+    @GetMapping("/getGroupDesignator/{roomid}/{wxid}")
+    public AjaxResult getGroupDesignator(@PathVariable("roomid") String roomid, @PathVariable("wxid") String wxid) {
+        wechatBotService.getChatroomMemberNick(roomid, wxid);
+        return AjaxResult.success();
+    }
+
+    /**
      * 描述: 获取个人详细信息 3.2.2.121版本dll 未提供该接口
      *
      * @param
