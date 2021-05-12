@@ -15,9 +15,13 @@ import java.net.URISyntaxException;
 @Configuration
 public class WechatBotConfig {
 
-    /** 微信bot 链接地址*/
+    /** 微信bot 链接地址 */
     @Value("${wechatBot.url}")
     private String wechatBotUrl;
+
+    /** 微信消息处理地址 */
+    public static String wechatMsgServerUrl;
+
 
     /** 初始化 */
     @Bean
@@ -28,4 +32,8 @@ public class WechatBotConfig {
         return botClient;
     }
 
+    @Value("${wechatBotServer.url}")
+    public void setWechatMsgServerUrl(String wechatMsgServerUrl) {
+        WechatBotConfig.wechatMsgServerUrl = wechatMsgServerUrl;
+    }
 }

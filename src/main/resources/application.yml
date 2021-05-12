@@ -6,3 +6,9 @@ server:
 # 连接到webSocket 连接地址
 wechatBot:
   url: ws://localhost:5555
+
+
+
+# 连接到webSocket 连接地址
+wechatBotServer:
+  url: https://localhost
