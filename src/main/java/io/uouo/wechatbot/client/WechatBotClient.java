@@ -2,6 +2,7 @@ package io.uouo.wechatbot.client;
 
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSONObject;
+import io.uouo.wechatbot.WechatBotApplication;
 import io.uouo.wechatbot.common.WechatBotCommon;
 import io.uouo.wechatbot.common.WechatBotConfig;
 import io.uouo.wechatbot.domain.WechatMsg;
@@ -9,10 +10,15 @@ import io.uouo.wechatbot.domain.WechatReceiveMsg;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.util.StringUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * websocket机器人客户端
@@ -86,6 +92,7 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
     @Override
     public void onClose(int i, String s, boolean b) {
         System.out.println("已断开连接... ");
+        restartListener();
     }
 
     /**
@@ -99,7 +106,7 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
     @Override
     public void onError(Exception e) {
         System.err.println("通信连接出现异常:" + e.getMessage());
-
+        restartListener();
     }
 
     /**
@@ -134,5 +141,20 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
         String string = JSONObject.toJSONString(wechatMsg);
         System.err.println(":" + string);
         send(JSONObject.toJSONString(wechatMsg));
+    }
+
+
+    /**
+     * Spring重启，实现客户端的自动重连
+     */
+    public void restartListener() {
+        ExecutorService threadPool = new ThreadPoolExecutor(1, 1, 0,
+                TimeUnit.SECONDS, new ArrayBlockingQueue<>(1), new ThreadPoolExecutor.DiscardOldestPolicy());
+        threadPool.execute(() -> {
+            WechatBotApplication.context.close();
+            WechatBotApplication.context = SpringApplication.run(WechatBotApplication.class,
+                    WechatBotApplication.args);
+        });
+        threadPool.shutdown();
     }
 }
