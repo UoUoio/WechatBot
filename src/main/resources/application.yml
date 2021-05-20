@@ -1,0 +1,21 @@
+# tomcat接口地址访问地址
+server:
+  port: 8081
+
+
+# 连接到webSocket 连接地址
+wechatBot:
+  url: ws://localhost:5555
+
+
+
+# 连接到webSocket 连接地址
+wechatBotServer:
+  url: https://localhost
+
+
+# 日志配置
+logging:
+  level:
+    io.uouo: debug
+    org.springframework: warn
