@@ -92,7 +92,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
     @Override
     public void onClose(int i, String s, boolean b) {
         System.out.println("已断开连接... ");
-        restartListener();
     }
 
     /**
@@ -106,7 +105,6 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
     @Override
     public void onError(Exception e) {
         System.err.println("通信连接出现异常:" + e.getMessage());
-        restartListener();
     }
 
     /**
@@ -133,28 +131,11 @@ public class WechatBotClient extends WebSocketClient implements WechatBotCommon 
         if (!StringUtils.hasText(wechatMsg.getWxid())) {
             wechatMsg.setWxid(NULL_MSG);
         }
-
-
         // 消息Id
         wechatMsg.setId(String.valueOf(System.currentTimeMillis()));
         // 发送消息
         String string = JSONObject.toJSONString(wechatMsg);
         System.err.println(":" + string);
         send(JSONObject.toJSONString(wechatMsg));
-    }
-
-
-    /**
-     * Spring重启，实现客户端的自动重连
-     */
-    public void restartListener() {
-        ExecutorService threadPool = new ThreadPoolExecutor(1, 1, 0,
-                TimeUnit.SECONDS, new ArrayBlockingQueue<>(1), new ThreadPoolExecutor.DiscardOldestPolicy());
-        threadPool.execute(() -> {
-            WechatBotApplication.context.close();
-            WechatBotApplication.context = SpringApplication.run(WechatBotApplication.class,
-                    WechatBotApplication.args);
-        });
-        threadPool.shutdown();
     }
 }
