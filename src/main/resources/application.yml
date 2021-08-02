@@ -9,9 +9,12 @@ wechatBot:
 
 
 
-# 连接到webSocket 连接地址
+# 微信消息处理地址(将消息发送给指定接口)
 wechatBotServer:
+  # 远程处理微信消息接口
   url: https://localhost
+  # 是否开启远程处理微信消息功能
+  isOpen: false
 
 
 # 日志配置
