@@ -138,7 +138,7 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
     public void getChatroomMemberNick(String roomid, String wxid) {
         WechatMsg wechatMsg = new WechatMsg();
         wechatMsg.setRoomid(roomid);
-        wechatMsg.setWxid(roomid);
+        wechatMsg.setWxid(wxid);
         wechatMsg.setType(CHATROOM_MEMBER_NICK);
         wechatBotClient.sendMsgUtil(wechatMsg);
     }
