@@ -104,7 +104,7 @@ public class WechatBotController {
     @GetMapping("/getWeChatUserList")
     public AjaxResult getWeChatUserList() {
         wechatBotService.getWeChatUserList();
-        return AjaxResult.success();
+        return AjaxResult.success("执行结果稍后会打印在控制台");
     }
 
     /**
@@ -119,7 +119,19 @@ public class WechatBotController {
     @GetMapping("/getChatroomMemberNick/{roomid}/{wxid}")
     public AjaxResult getChatroomMemberNick(@PathVariable("roomid") String roomid, @PathVariable("wxid") String wxid) {
         wechatBotService.getChatroomMemberNick(roomid, wxid);
-        return AjaxResult.success();
+        return AjaxResult.success("执行结果稍后会打印在控制台");
+    }
+
+    /**
+     * 描述: 获取所有群组以及成员
+     *
+     * @return io.uouo.wechatbot.common.util.AjaxResult
+     * @Author 青衫 [2940500@qq.com]
+     */
+    @GetMapping("/getMemberId}")
+    public AjaxResult getMemberId() {
+        wechatBotService.getMemberId();
+        return AjaxResult.success("执行结果稍后会打印在控制台");
     }
 
     /**

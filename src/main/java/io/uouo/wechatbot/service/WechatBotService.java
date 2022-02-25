@@ -43,7 +43,7 @@ public interface WechatBotService {
      * 描述: 群组内发送@指定人消息
      *
      * @param wechatMsg
-     * @return io.uouo.wechatbot.common.util.AjaxResult
+     
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-26
      */
@@ -54,7 +54,7 @@ public interface WechatBotService {
      * 描述: 发送附件
      *
      * @param wechatMsg
-     * @return io.uouo.wechatbot.common.util.AjaxResult
+     
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-26
      */
@@ -64,7 +64,7 @@ public interface WechatBotService {
      * 描述: 获取微信群组,联系人列表
      *
      * @param
-     * @return io.uouo.wechatbot.common.util.AjaxResult
+     
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-29
      */
@@ -85,9 +85,17 @@ public interface WechatBotService {
      *
      * @param roomid 群组id
      * @param wxid   指定用户id
-     * @return io.uouo.wechatbot.common.util.AjaxResult
+     
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-5-6
      */
     void getChatroomMemberNick(String roomid, String wxid);
+
+    /**
+     * 描述: 获取所有群组以及成员
+     *
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-5-6
+     */
+    void getMemberId();
 }

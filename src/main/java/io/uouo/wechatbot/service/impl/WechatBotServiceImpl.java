@@ -67,7 +67,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      * 描述: 群组内发送@指定人消息
      *
      * @param wechatMsg
-     * @return io.uouo.wechatbot.common.util.AjaxResult
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-26
      */
@@ -82,7 +81,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      * 描述: 发送附件
      *
      * @param wechatMsg
-     * @return io.uouo.wechatbot.common.util.AjaxResult
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-26
      */
@@ -97,7 +95,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      * 描述: 获取微信群组,联系人列表
      *
      * @param
-     * @return io.uouo.wechatbot.common.util.AjaxResult
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-3-29
      * @see WechatBotCommon#USER_LIST 发起后会收到一条type类型是该常量值消息
@@ -130,7 +127,6 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
      *
      * @param roomid 群组id
      * @param wxid   指定用户id
-     * @return io.uouo.wechatbot.common.util.AjaxResult
      * @Author 青衫 [2940500@qq.com]
      * @Date 2021-5-6
      */
@@ -141,5 +137,18 @@ public class WechatBotServiceImpl implements WechatBotService, WechatBotCommon {
         wechatMsg.setWxid(wxid);
         wechatMsg.setType(CHATROOM_MEMBER_NICK);
         wechatBotClient.sendMsgUtil(wechatMsg);
+    }
+
+
+    /**
+     * 描述: 获取所有群组以及成员
+     *
+     * @Author 青衫 [2940500@qq.com]
+     * @Date 2021-5-6
+     */
+    @Override
+    public void getMemberId() {
+        WechatMsg wechatMsg = new WechatMsg();
+        wechatMsg.setType(CHATROOM_MEMBER);
     }
 }
